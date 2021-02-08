@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (res, req) => res.send("API RUNING"));
+app.get("/", (req, res) => res.send("API RUNING"));
 
 const PORT = process.env.PORT || 5000;
 
