@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 //COnnect Db
 // connectDB();
-
+//Init Middelware
+app.use(express.json({ extend: false }));
 app.get("/", (req, res) => res.send("API RUNING"));
 
 //Define Routes
