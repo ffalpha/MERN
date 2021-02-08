@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-//COnnect Db
-// connectDB();
+const connectDB = require("./config/db");
+//Connect Db
+connectDB();
 //Init Middelware
 app.use(express.json({ extend: false }));
 app.get("/", (req, res) => res.send("API RUNING"));
