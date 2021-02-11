@@ -53,7 +53,7 @@ const ProfileSchema = new mongoose.Schema({
         default: false,
       },
       descritpion: {
-        type: string,
+        type: String,
       },
     },
   ],
@@ -83,7 +83,7 @@ const ProfileSchema = new mongoose.Schema({
         default: false,
       },
       descritpion: {
-        type: string,
+        type: String,
       },
     },
   ],
@@ -101,7 +101,7 @@ const ProfileSchema = new mongoose.Schema({
       type: String,
     },
     instgram: {
-      type: Stirng,
+      type: String,
     },
   },
 
