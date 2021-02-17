@@ -10,9 +10,9 @@ const { check, validationResult } = require("express-validator");
 //@access Private
 router.get("/me", auth, async (req, res) => {
   try {
-    const profile = await await Profile.findOne({
+    const profile = await Profile.findOne({
       user: req.user.id,
-    }).populate("users", ["name", "avatar"]);
+    }).populate("user", ["name", "avatar"]);
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
@@ -100,5 +100,19 @@ router.post(
     }
   }
 );
+
+//@route Get api/profile/
+//@desc Get all proile
+//@access Public
+
+router.get("/", async (req, res) => {
+  try {
+    const profile = await Profile.find().populate("user", ["name", "avatar"]);
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 module.exports = router;
