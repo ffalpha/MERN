@@ -14,11 +14,11 @@ const ProfileSchema = new mongoose.Schema({
   location: {
     type: String,
   },
-  Status: {
+  status: {
     type: String,
     required: true,
   },
-  Skils: {
+  skills: {
     type: [String],
     required: true,
   },

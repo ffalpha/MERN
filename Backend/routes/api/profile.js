@@ -57,17 +57,19 @@ router.post(
     //Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
-    console.log(status);
+
     if (company) profileFields.company = company;
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
-    if (githubusernam) profileFields.githubusername = githubusername;
+    if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
       //maping
       profileFields.skills = skills.split(",").map((skill) => skill.trim());
     }
+
+    console.log(profileFields.skills);
     //Build social object
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
@@ -88,16 +90,14 @@ router.post(
         return res.json(profile);
       }
       //Create Profile
+
       profile = new Profile(profileFields);
-      console.error(profile);
-      // await profile.save();
-      // res.json(profile);
+      await profile.save();
+      return res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send("Server Error2");
+      return res.status(500).send("Server Error2");
     }
-
-    res.send("Okay");
   }
 );
 
